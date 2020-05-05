@@ -32,14 +32,17 @@ export default class Shirtdesigner extends Component {
     });
     window.canvas.centerObject(textbox);
 
-    window.fabric.Image.fromURL("/shirt1.png", (oImg) => {
-      oImg.scale(0.5);
-      oImg.selectable = false;
-      window.canvas.moveTo(oImg, 0);
-      window.canvas.centerObject(oImg);
-      window.canvas.add(oImg);
-      window.canvas.add(textbox);
-    });
+    window.fabric.Image.fromURL(
+      "https://firebasestorage.googleapis.com/v0/b/shirtdesign.appspot.com/o/shirt1.png?alt=media&token=acfbcb82-2954-495f-9b35-d687fa3ce995",
+      (oImg) => {
+        oImg.scale(0.5);
+        oImg.selectable = false;
+        window.canvas.moveTo(oImg, 0);
+        window.canvas.centerObject(oImg);
+        window.canvas.add(oImg);
+        window.canvas.add(textbox);
+      }
+    );
   }
   resizeCanvas = () => {
     console.log(1);
