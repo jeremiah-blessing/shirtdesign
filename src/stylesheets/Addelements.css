@@ -1,0 +1,60 @@
+.add-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.icons-card {
+  width: fit-content;
+  height: 80px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  background-color: var(--primary);
+}
+.icon-container svg {
+  width: 70%;
+  height: 70%;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+  fill: white;
+}
+.icon-container svg path {
+  pointer-events: none;
+}
+.icon-container:nth-of-type(3) svg {
+  width: 60%;
+  height: 60%;
+  cursor: pointer;
+}
+.icon-container {
+  width: 100px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon-container svg:hover {
+  transform: scale(1.05);
+}
+.add {
+  display: block;
+  font-size: 1rem;
+  font-family: "Montserrat" !important;
+  text-transform: uppercase;
+  font-weight: 800 !important;
+  width: fit-content;
+  height: fit-content;
+  padding: 5px 10px;
+  background-color: white;
+  color: var(--primary);
+  border-radius: 7px;
+  transform-origin: 50% 50%;
+  transform: rotate(-90deg);
+  letter-spacing: 3px;
+  position: absolute;
+  left: -4.5rem;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+  user-select: none;
+}

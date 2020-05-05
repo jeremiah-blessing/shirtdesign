@@ -39,5 +39,16 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script src="./fabric.js"></script>
+    <script>
+      window.createCanvas = () => {
+        window.canvas = new fabric.Canvas("sd", {
+          backgroundColor: "#fe7a88",
+          width: 500,
+          height: 500,
+        });
+        window.fabricInstance = fabric;
+      };
+    </script>
   </body>
 </html>

@@ -1,0 +1,8 @@
+.uploaded-images {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.uploaded-images:hover {
+  transform: scale(1.05);
+  border: 2px solid var(--primary);
+}
