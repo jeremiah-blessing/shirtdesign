@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/shirtdesign/static/css/main.ad3ff1f3.chunk.css",
+    "main.js": "/shirtdesign/static/js/main.b2342eeb.chunk.js",
+    "main.js.map": "/shirtdesign/static/js/main.b2342eeb.chunk.js.map",
+    "runtime-main.js": "/shirtdesign/static/js/runtime-main.49971725.js",
+    "runtime-main.js.map": "/shirtdesign/static/js/runtime-main.49971725.js.map",
+    "static/css/2.22306566.chunk.css": "/shirtdesign/static/css/2.22306566.chunk.css",
+    "static/js/2.eab7670d.chunk.js": "/shirtdesign/static/js/2.eab7670d.chunk.js",
+    "static/js/2.eab7670d.chunk.js.map": "/shirtdesign/static/js/2.eab7670d.chunk.js.map",
+    "index.html": "/shirtdesign/index.html",
+    "precache-manifest.1f1c83869e62c389f52ae2f7454d5013.js": "/shirtdesign/precache-manifest.1f1c83869e62c389f52ae2f7454d5013.js",
+    "service-worker.js": "/shirtdesign/service-worker.js",
+    "static/css/2.22306566.chunk.css.map": "/shirtdesign/static/css/2.22306566.chunk.css.map",
+    "static/css/main.ad3ff1f3.chunk.css.map": "/shirtdesign/static/css/main.ad3ff1f3.chunk.css.map",
+    "static/js/2.eab7670d.chunk.js.LICENSE.txt": "/shirtdesign/static/js/2.eab7670d.chunk.js.LICENSE.txt",
+    "static/media/semantic.min.css": "/shirtdesign/static/media/outline-icons.ef60a4f6.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.49971725.js",
+    "static/css/2.22306566.chunk.css",
+    "static/js/2.eab7670d.chunk.js",
+    "static/css/main.ad3ff1f3.chunk.css",
+    "static/js/main.b2342eeb.chunk.js"
+  ]
+}
