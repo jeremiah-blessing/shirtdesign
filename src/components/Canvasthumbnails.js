@@ -72,7 +72,7 @@ export default class Canvasthumbnails extends Component {
                 onClick={() => this.changeImage("front.png")}
                 className="canvas-thumbnail-select"
               >
-                <Image src="/front.png" size="small" />
+                <Image src="front.png" size="small" />
               </Segment>
             </Grid.Column>
             <Grid.Column>
@@ -80,7 +80,7 @@ export default class Canvasthumbnails extends Component {
                 onClick={() => this.changeImage("back.png")}
                 className="canvas-thumbnail-select"
               >
-                <Image src="/back.png" size="small" />
+                <Image src="back.png" size="small" />
               </Segment>
             </Grid.Column>
             <Grid.Column>
@@ -88,7 +88,7 @@ export default class Canvasthumbnails extends Component {
                 onClick={() => this.changeImage("left.png")}
                 className="canvas-thumbnail-select"
               >
-                <Image src="/left.png" size="small" />
+                <Image src="left.png" size="small" />
               </Segment>
             </Grid.Column>
             <Grid.Column>
@@ -96,7 +96,7 @@ export default class Canvasthumbnails extends Component {
                 onClick={() => this.changeImage("right.png")}
                 className="canvas-thumbnail-select"
               >
-                <Image src="/right.png" size="small" />
+                <Image src="right.png" size="small" />
               </Segment>
             </Grid.Column>
           </Grid>
