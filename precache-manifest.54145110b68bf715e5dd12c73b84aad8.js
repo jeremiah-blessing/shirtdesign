@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "570f0470d7e258ef863ac4ce134ecb48",
+    "revision": "67cfb9b27992d96a5eabdfe57b95a8fb",
     "url": "/shirtdesign/index.html"
   },
   {
-    "revision": "9b2529c427093c9b3cee",
+    "revision": "b9899dc90b2f50088fa4",
     "url": "/shirtdesign/static/css/2.22306566.chunk.css"
   },
   {
-    "revision": "c6334bd952467042e327",
-    "url": "/shirtdesign/static/css/main.ad3ff1f3.chunk.css"
+    "revision": "c37b9360ebae73797cdc",
+    "url": "/shirtdesign/static/css/main.06a6b1f3.chunk.css"
   },
   {
-    "revision": "9b2529c427093c9b3cee",
-    "url": "/shirtdesign/static/js/2.eab7670d.chunk.js"
+    "revision": "b9899dc90b2f50088fa4",
+    "url": "/shirtdesign/static/js/2.3bdc20bf.chunk.js"
   },
   {
     "revision": "b3fd412fe4f7cb9fd0fd7fcfb6689a01",
-    "url": "/shirtdesign/static/js/2.eab7670d.chunk.js.LICENSE.txt"
+    "url": "/shirtdesign/static/js/2.3bdc20bf.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c6334bd952467042e327",
-    "url": "/shirtdesign/static/js/main.d92eb1b8.chunk.js"
+    "revision": "c37b9360ebae73797cdc",
+    "url": "/shirtdesign/static/js/main.7d774009.chunk.js"
   },
   {
     "revision": "57322e99e5f43f50b279",
