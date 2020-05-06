@@ -18,6 +18,12 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Extra fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Narrow:ital,wght@0,400;0,700;1,400;1,700&family=Caveat+Brush&family=Oswald:wght@400;700&family=Sacramento&display=swap"
+      rel="stylesheet"
+    />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -33,6 +39,18 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <style>
+      #sd {
+        width: 600;
+        height: 600;
+      }
+      @media only screen and (max-width: 600px) {
+        #sd {
+          width: 300;
+          height: 300;
+        }
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -50,12 +68,67 @@
     <script src="./fabric.js"></script>
     <script>
       window.createCanvas = () => {
+        var windowWidth = window.innerWidth,
+          windowHeight = window.innerHeight;
+        var canvasWidth, canvasHeight;
+        if (windowWidth > 600) {
+          canvasWidth = 450;
+          canvasHeight = 450;
+        } else if (windowWidth > 500) {
+          canvasWidth = 450;
+          canvasHeight = windowHeight - 350;
+        } else if (windowWidth > 400) {
+          canvasWidth = 330;
+          canvasHeight = windowHeight - 350;
+        } else if (windowWidth > 350) {
+          canvasWidth = 250;
+          canvasHeight = windowHeight - 350;
+        } else {
+          canvasWidth = 250;
+          canvasHeight = windowHeight - 350;
+        }
         window.canvas = new fabric.Canvas("sd", {
+          // backgroundColor: "#fff",
           backgroundColor: "#fe7a88",
-          width: 500,
-          height: 500,
+          height: canvasHeight,
+          width: canvasWidth,
         });
+
         window.fabricInstance = fabric;
+        // Adding Controller
+
+        // var deleteIcon =
+        //   "data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg version='1.1' id='Ebene_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='595.275px' height='595.275px' viewBox='200 215 230 470' xml:space='preserve'%3E%3Ccircle style='fill:%23F44336;' cx='299.76' cy='439.067' r='218.516'/%3E%3Cg%3E%3Crect x='267.162' y='307.978' transform='matrix(0.7071 -0.7071 0.7071 0.7071 -222.6202 340.6915)' style='fill:white;' width='65.545' height='262.18'/%3E%3Crect x='266.988' y='308.153' transform='matrix(0.7071 0.7071 -0.7071 0.7071 398.3889 -83.3116)' style='fill:white;' width='65.544' height='262.179'/%3E%3C/g%3E%3C/svg%3E";
+
+        // var img = document.createElement("img");
+        // img.src = deleteIcon;
+        // window.fabricInstance.Object.prototype.controls.deleteControl = new window.fabricInstance.Control(
+        //   {
+        //     position: { x: 0.5, y: -0.5 },
+        //     offsetY: 16,
+        //     cursorStyle: "pointer",
+        //     mouseUpHandler: deleteObject,
+        //     render: renderIcon,
+        //     cornerSize: 24,
+        //   }
+        // );
+        // function deleteObject(eventData, target) {
+        //   var canvas = target.canvas;
+        //   canvas.remove(target);
+        //   canvas.requestRenderAll();
+        // }
+        // function renderIcon(ctx, left, top, styleOverride, fabricObject) {
+        //   var size = this.cornerSize;
+        //   ctx.save();
+        //   ctx.translate(left, top);
+        //   ctx.rotate(
+        //     window.fabricInstance.util.degreesToRadians(fabricObject.angle)
+        //   );
+        //   ctx.drawImage(img, -size / 2, -size / 2, size, size);
+        //   ctx.restore();
+        // }
+
+        // Last thing
       };
     </script>
   </body>

@@ -7,7 +7,11 @@ import AddelementText from "./AddelementText";
 export default class Addelements extends Component {
   render() {
     return (
-      <div className="add-container">
+      <div
+        className={
+          this.props.formobile ? "add-container mobile" : "add-container pc"
+        }
+      >
         <span className="add">Add</span>
         <div className="icons-card">
           <AddelementText />

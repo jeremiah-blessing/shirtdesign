@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Colorpicker from "./Colorpicker";
+import Fontselector from "./Fontselector";
 
 export default class EditText extends Component {
   handleEditIcons = (e) => {
@@ -51,6 +52,7 @@ export default class EditText extends Component {
       <div className="edit-icons">
         <Colorpicker />
 
+        <Fontselector />
         <div
           className="edit-icon"
           onClick={this.handleEditIcons}

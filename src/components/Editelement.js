@@ -31,10 +31,16 @@ export default class Editelement extends Component {
   };
   render() {
     return (
-      <div className="edit-container">
+      <div
+        className={
+          this.props.formobile === false
+            ? "edit-container pc"
+            : "edit-container mobile"
+        }
+      >
         <span className="edit">Edit</span>
         <div className="edit-container-in">
-          {this.state.editingState === "textbox" ? (
+          {this.props.editingState === "textbox" ? (
             <>
               {/* <Fontselector /> */}
               <EditText />
@@ -42,13 +48,13 @@ export default class Editelement extends Component {
           ) : (
             ""
           )}
-          {this.state.editingState === "none" ? (
-            <h1 className="sae">Select text / Icon to edit</h1>
+          {this.props.editingState === "none" ? (
+            <h1 className="sae">Select Something</h1>
           ) : (
             ""
           )}
-          {this.state.editingState === "image" ? (
-            <h1 className="sae">Select text / Icon to edit</h1>
+          {this.props.editingState === "image" ? (
+            <h1 className="sae">Image is selected</h1>
           ) : (
             ""
           )}
