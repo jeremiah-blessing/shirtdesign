@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../stylesheets/Editelement.css";
 import Fontselector from "./Fontselector";
 import EditText from "./EditText";
+import Editimage from "./Editimage";
 
 export default class Editelement extends Component {
   constructor(props) {
@@ -53,11 +54,7 @@ export default class Editelement extends Component {
           ) : (
             ""
           )}
-          {this.props.editingState === "image" ? (
-            <h1 className="sae">Image is selected</h1>
-          ) : (
-            ""
-          )}
+          {this.props.editingState === "image" ? <Editimage /> : ""}
         </div>
       </div>
     );

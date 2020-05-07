@@ -33,7 +33,7 @@ export default class Canvasthumbnails extends Component {
         cornerSize: 12,
         padding: 10,
         cornerStyle: "circle",
-        borderDashArray: [3, 3],
+        objectCaching: false,
       });
       window.canvas.centerObject(textbox);
       window.canvas.add(textbox);

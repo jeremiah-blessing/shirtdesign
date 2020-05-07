@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import { Menu, Icon, Label } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 export default class MenuExampleStackable extends Component {
   state = {};
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+  handleItemClick = (e, { name }) => {
+    this.setState({ activeItem: name });
+    this.props.handleNavigation(name);
+  };
 
   render() {
     const { activeItem } = this.state;
@@ -25,14 +29,14 @@ export default class MenuExampleStackable extends Component {
           Orders
         </Menu.Item>
 
-        <Menu.Item
+        {/* <Menu.Item
           name="refunds"
           active={activeItem === "refunds"}
           onClick={this.handleItemClick}
         >
           <Icon name="rupee sign" color="teal" />
           Refunds
-        </Menu.Item>
+        </Menu.Item> */}
         <Menu.Item
           name="messages"
           active={activeItem === "messages"}
@@ -40,6 +44,12 @@ export default class MenuExampleStackable extends Component {
         >
           <Icon name="mail" color="teal" />
           Messages
+        </Menu.Item>
+        <Menu.Item name="link" active={activeItem === "link"}>
+          <Link to="/">
+            <Icon name="paw" color="teal" />
+            Go to Designer
+          </Link>
         </Menu.Item>
 
         <Menu.Item

@@ -22,7 +22,12 @@ export default class AddelementSvg extends Component {
       >
         <Modal.Header>Select SVG</Modal.Header>
         <Modal.Content>
-          <h1>Feature to be added!</h1>
+          <i
+            className="fas fa-user"
+            onClick={() => {
+              alert(1);
+            }}
+          ></i>
         </Modal.Content>
       </Modal>
     );

@@ -96,7 +96,6 @@ export default class AddelementImage extends Component {
       cornerSize: 12,
       padding: 10,
       cornerStyle: "circle",
-      borderDashArray: [3, 3],
     });
     window.canvas.centerObject(oImg);
     window.canvas.add(oImg);

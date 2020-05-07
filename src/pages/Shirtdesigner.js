@@ -25,6 +25,10 @@ export default class Shirtdesigner extends Component {
     this.canvas = window.canvas;
     this.fabric = window.fabricInstance;
 
+    window.fabricInstance.Object.prototype.cornerColor = "blue";
+    // PROTOTYPE
+
+    // PROTOTYPE
     // Add a event Listner
     var listenCanvas;
     if (window.canvas) {

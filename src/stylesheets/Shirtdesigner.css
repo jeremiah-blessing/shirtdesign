@@ -12,7 +12,7 @@
   flex-direction: column;
 }
 .shirt-designer {
-  min-height: 100vh;
+  min-height: 105vh;
   background-color: #a0c7ce;
 }
 .canvas-thumbnails {
@@ -40,6 +40,7 @@
 }
 .design-text-subhead {
   color: var(--primary);
+  /* color: #325b62; */
   font-family: var(--secondary-txt);
   font-weight: 600;
   font-size: 1.5rem;

@@ -11,7 +11,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #a0c7ce !important; /*TODO:Change this after*/
+  /* background-color: #a0c7ce !important; TODO:Change this after */
   /* overflow-x: scroll !important; */
 }
 

@@ -18,7 +18,7 @@ export default function AddelementText() {
       cornerSize: 12,
       padding: 10,
       cornerStyle: "circle",
-      borderDashArray: [3, 3],
+      strokeWidth: 10,
     });
     window.canvas.centerObject(textbox);
     window.canvas.add(textbox).setActiveObject(textbox);
