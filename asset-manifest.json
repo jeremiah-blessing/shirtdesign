@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/shirtdesign/static/css/main.fe222956.chunk.css",
+    "main.css": "/shirtdesign/static/css/main.5cfe6fdc.chunk.css",
     "main.js": "/shirtdesign/static/js/main.3ef6db83.chunk.js",
     "main.js.map": "/shirtdesign/static/js/main.3ef6db83.chunk.js.map",
     "runtime-main.js": "/shirtdesign/static/js/runtime-main.49971725.js",
@@ -9,10 +9,10 @@
     "static/js/2.43479bb3.chunk.js": "/shirtdesign/static/js/2.43479bb3.chunk.js",
     "static/js/2.43479bb3.chunk.js.map": "/shirtdesign/static/js/2.43479bb3.chunk.js.map",
     "index.html": "/shirtdesign/index.html",
-    "precache-manifest.8a01edab17a7132dda4fb0c76e405041.js": "/shirtdesign/precache-manifest.8a01edab17a7132dda4fb0c76e405041.js",
+    "precache-manifest.9489cc4b483869e82b286ba624b1a65a.js": "/shirtdesign/precache-manifest.9489cc4b483869e82b286ba624b1a65a.js",
     "service-worker.js": "/shirtdesign/service-worker.js",
     "static/css/2.22306566.chunk.css.map": "/shirtdesign/static/css/2.22306566.chunk.css.map",
-    "static/css/main.fe222956.chunk.css.map": "/shirtdesign/static/css/main.fe222956.chunk.css.map",
+    "static/css/main.5cfe6fdc.chunk.css.map": "/shirtdesign/static/css/main.5cfe6fdc.chunk.css.map",
     "static/js/2.43479bb3.chunk.js.LICENSE.txt": "/shirtdesign/static/js/2.43479bb3.chunk.js.LICENSE.txt",
     "static/media/semantic.min.css": "/shirtdesign/static/media/outline-icons.ef60a4f6.woff"
   },
@@ -20,7 +20,7 @@
     "static/js/runtime-main.49971725.js",
     "static/css/2.22306566.chunk.css",
     "static/js/2.43479bb3.chunk.js",
-    "static/css/main.fe222956.chunk.css",
+    "static/css/main.5cfe6fdc.chunk.css",
     "static/js/main.3ef6db83.chunk.js"
   ]
 }
