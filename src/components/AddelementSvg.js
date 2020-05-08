@@ -119,6 +119,7 @@ export default class AddelementSvg extends Component {
                     className="search-image"
                     onClick={(e) => {
                       this.addSvgToCanvas(icon);
+                      this.setState({ modalOpen: false });
                     }}
                     src={`data:image/svg+xml;utf8,${icon}`}
                   />
