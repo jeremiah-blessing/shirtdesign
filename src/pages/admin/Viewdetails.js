@@ -5,6 +5,7 @@ import Productdetails from "./Productdetails";
 export default function Viewdetails() {
   return (
     <Modal
+      closeIcon
       trigger={
         <Button
           content="More Details"
@@ -27,6 +28,7 @@ export default function Viewdetails() {
           <Grid>
             <Grid.Column textAlign="center">
               <Modal
+                closeIcon
                 trigger={
                   <Button icon labelPosition="right" color="blue">
                     <Icon name="address card" />
