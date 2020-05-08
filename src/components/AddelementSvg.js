@@ -12,7 +12,7 @@ var searchTimer;
 export default class AddelementSvg extends Component {
   constructor(props) {
     super(props);
-    this.state = { searching: false, icons: [] };
+    this.state = { searching: false, icons: [], modalOpen: false };
   }
 
   handleSearch = (e, data) => {
@@ -66,8 +66,14 @@ export default class AddelementSvg extends Component {
   render() {
     return (
       <Modal
+        open={this.state.modalOpen}
         dimmer="blurring"
-        onOpen={(e, data) => this.fetchData(["football", "wind", "ghost"])}
+        onOpen={(e, data) => {
+          this.setState({ modalOpen: true });
+          this.fetchData(["football", "wind", "ghost"]);
+        }}
+        closeOnDimmerClick={true}
+        onClose={() => this.setState({ modalOpen: false })}
         closeIcon
         trigger={
           <div className="icon-container">
