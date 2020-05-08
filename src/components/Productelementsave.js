@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal } from "semantic-ui-react";
+import { Modal, Header, Icon } from "semantic-ui-react";
 
 export default function Productelementsave() {
   return (
@@ -21,7 +21,11 @@ export default function Productelementsave() {
       <Modal.Header>Save Design</Modal.Header>
       <Modal.Content>
         <Modal.Description>
-          <h1>Phase 3 Milestone</h1>
+          <Header as="h2" icon textAlign="center">
+            <Icon name="clock" circular />
+            <Header.Content>Save Design</Header.Content>
+            <Header.Subheader>Milestone 3</Header.Subheader>
+          </Header>
         </Modal.Description>
       </Modal.Content>
     </Modal>

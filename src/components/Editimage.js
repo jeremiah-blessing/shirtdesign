@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 export default class Editimage extends Component {
   handleEditIcons = (e) => {
-    // alert(e.target.getAttribute("data-action"));
     const clicked = e.target.getAttribute("data-action");
     console.log(window.canvas.getActiveObject());
     if (window.canvas.getActiveObject() !== null) {

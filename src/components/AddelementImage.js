@@ -6,11 +6,9 @@ import {
   Modal,
   Image,
   Button,
-  Progress,
   Label,
   Icon,
   Placeholder,
-  Grid,
 } from "semantic-ui-react";
 
 export default class AddelementImage extends Component {
@@ -115,8 +113,12 @@ export default class AddelementImage extends Component {
     ));
     return (
       <Modal
+        dimmer="blurring"
+        closeIcon
+        closeOnDimmerClick={true}
         onOpen={this.getImages}
         open={this.state.modalOpen}
+        onClose={() => this.setState({ modalOpen: false })}
         trigger={
           <div
             className="icon-container"
@@ -160,14 +162,6 @@ export default class AddelementImage extends Component {
             hidden
             onChange={this.fileChange}
           />
-          <Button
-            icon
-            labelPosition="right"
-            color="green"
-            onClick={() => this.setState({ modalOpen: !this.state.modalOpen })}
-          >
-            Cancel <Icon name="close" />
-          </Button>
         </Modal.Content>
         <Modal.Content>
           {this.state.uploading ? (

@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Segment,
-  Icon,
-  Image,
-  Modal,
-  Header,
-  Button,
-  Grid,
-} from "semantic-ui-react";
+import { Segment, Icon, Modal, Header, Button, Grid } from "semantic-ui-react";
 import Productdetails from "./Productdetails";
 
 export default function Viewdetails() {

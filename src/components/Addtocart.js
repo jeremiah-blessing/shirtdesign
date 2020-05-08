@@ -12,6 +12,8 @@ export default class Addtocart extends Component {
   render() {
     return (
       <Modal
+        dimmer="blurring"
+        closeIcon
         size="small"
         trigger={
           <div className="add-product-icon-container">

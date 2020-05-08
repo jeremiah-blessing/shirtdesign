@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Popup, Grid, Image, Segment, Modal } from "semantic-ui-react";
+import { Popup, Grid, Image, Segment } from "semantic-ui-react";
 
 export default class Canvasthumbnails extends Component {
   constructor(props) {

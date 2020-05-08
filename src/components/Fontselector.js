@@ -1,5 +1,5 @@
 import React from "react";
-import { Popup, List, Button } from "semantic-ui-react";
+import { Popup, Button } from "semantic-ui-react";
 
 export default function Fontselector() {
   const changefont = (fontName) => {

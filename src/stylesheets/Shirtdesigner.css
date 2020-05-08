@@ -85,7 +85,7 @@
   .add-product-container {
     width: 100vw !important;
     position: fixed;
-    z-index: 100;
+    z-index: 70;
     bottom: 0px;
     margin: 0px !important;
     border-radius: 0px !important;

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "../stylesheets/Editelement.css";
-import Fontselector from "./Fontselector";
 import EditText from "./EditText";
 import Editimage from "./Editimage";
+import Editsvg from "./Editsvg";
 
 export default class Editelement extends Component {
   constructor(props) {
@@ -43,7 +43,6 @@ export default class Editelement extends Component {
         <div className="edit-container-in">
           {this.props.editingState === "textbox" ? (
             <>
-              {/* <Fontselector /> */}
               <EditText />
             </>
           ) : (
@@ -55,6 +54,7 @@ export default class Editelement extends Component {
             ""
           )}
           {this.props.editingState === "image" ? <Editimage /> : ""}
+          {this.props.editingState === "path" ? <Editsvg /> : ""}
         </div>
       </div>
     );

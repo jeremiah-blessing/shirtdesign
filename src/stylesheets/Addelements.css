@@ -72,6 +72,14 @@
   pointer-events: none;
   user-select: none;
 }
+.search-image {
+  filter: invert(50%) sepia(100%) hue-rotate(270deg) contrast(170%);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.search-image:hover {
+  transform: scale(1.05);
+}
 
 @media only screen and (max-width: 600px) {
   .add-container.mobile {

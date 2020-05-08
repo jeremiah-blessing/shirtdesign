@@ -1,25 +1,6 @@
 import React, { Component } from "react";
-import {
-  Container,
-  Segment,
-  Label,
-  Menu,
-  Item,
-  Grid,
-  Icon,
-  Header,
-  Button,
-  Table,
-  Image,
-  Modal,
-  Form,
-  Divider,
-  Input,
-  Dropdown,
-  Tab,
-} from "semantic-ui-react";
+import { Container } from "semantic-ui-react";
 import Navbar from "./Navbar";
-import Viewdetails from "./Viewdetails";
 import Orders from "./Orders";
 import Dashboardheading from "./Dashboardheading";
 import Messages from "./Messages";
@@ -55,7 +36,7 @@ export default class Dashboard extends Component {
     return (
       <div>
         <Navbar handleNavigation={this.handleNavigation} />
-        <Container>
+        <Container style={{ overflowX: "scroll" }}>
           <Dashboardheading
             iconName={icon}
             heading={heading}

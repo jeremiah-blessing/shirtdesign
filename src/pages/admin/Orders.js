@@ -1,7 +1,6 @@
 import React from "react";
 import { Table, Icon } from "semantic-ui-react";
 import Viewdetails from "./Viewdetails";
-import Issuerefund from "./Issuerefund";
 
 export default function Orders() {
   return (

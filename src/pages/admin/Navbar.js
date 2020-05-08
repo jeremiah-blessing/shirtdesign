@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Menu, Icon, Label } from "semantic-ui-react";
+import { Menu, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 export default class MenuExampleStackable extends Component {
@@ -46,7 +46,7 @@ export default class MenuExampleStackable extends Component {
           Messages
         </Menu.Item>
         <Menu.Item name="link" active={activeItem === "link"}>
-          <Link to="/">
+          <Link to="/shirt-designer">
             <Icon name="paw" color="teal" />
             Go to Designer
           </Link>

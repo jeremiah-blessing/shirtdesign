@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Header, Icon } from "semantic-ui-react";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import firebase from "../firebaseConfig";
 import "firebase/auth";
@@ -21,7 +22,12 @@ export default class Login extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="login-page">
+        <Header as="h2" icon>
+          <Icon name="user" color="teal" />
+          Login
+          <Header.Subheader>Login to Place / Manage Orders</Header.Subheader>
+        </Header>
         <StyledFirebaseAuth
           uiConfig={this.uiConfig}
           firebaseAuth={firebase.auth()}

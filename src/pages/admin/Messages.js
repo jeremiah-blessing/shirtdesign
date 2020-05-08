@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Segment, Label, Message } from "semantic-ui-react";
+import { Segment, Label } from "semantic-ui-react";
 
 export default class Messages extends Component {
   render() {

@@ -19,3 +19,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+body::-webkit-scrollbar {
+  width: 0rem;
+}
+
+body::-webkit-scrollbar-track {
+  /* background: rgba(39, 83, 115, 0.3); */
+  background: rgba(254, 122, 136, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: rgb(254, 122, 136);
+}

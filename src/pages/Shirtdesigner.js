@@ -53,7 +53,7 @@ export default class Shirtdesigner extends Component {
             verticalAlign="middle"
             stretched
           >
-            <div className="canvas-container">
+            <div className="canvas-container" style={{ marginTop: 60 }}>
               <div className="canvas-con">
                 <canvas id="sd" height={500} width={500}></canvas>
               </div>
