@@ -27,10 +27,6 @@
   background-color: #fff;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
-body {
-  background-color: #a0c7ce;
-  margin: 0px;
-}
 
 .hamburger.active .hamburger-sticks:nth-of-type(1) {
   transform: translateY(10px);
