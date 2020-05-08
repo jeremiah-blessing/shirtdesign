@@ -8,11 +8,12 @@
   top: 0;
   z-index: 100;
   border-radius: 0px 0px 0px 12px;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.25);
 }
 .hamburger-in {
   height: 80px;
   width: 80px;
-  padding: 10px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,7 +22,7 @@
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .hamburger-sticks {
-  height: 13%;
+  height: 9%;
   width: 100%;
   margin: 5px;
   background-color: #fff;
@@ -106,6 +107,20 @@
   }
   .active.nav-links {
     color: #fe7a88;
+  }
+  .hamburger-in {
+    height: 60px;
+    width: 60px;
+    padding: 12px;
+  }
+  .hamburger-sticks {
+    height: 7%;
+  }
+  .hamburger.active .hamburger-sticks:nth-of-type(1) {
+    transform: translateY(7px);
+  }
+  .hamburger.active .hamburger-sticks:nth-of-type(3) {
+    transform: translateY(-7px);
   }
 }
 @media only screen and (min-width: 900px) {
