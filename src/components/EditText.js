@@ -73,7 +73,7 @@ export default class EditText extends Component {
   render() {
     return (
       <>
-        <Segment style={{ width: "100%" }} basic textAlign='center'>
+        <Segment className="text-edit-input" style={{ width: "100%" }} basic textAlign='center'>
           <Input color="teal" placeholder='Enter your text' icon='font' iconPosition='left' fluid value={this.state.currentText} onChange={this.handleTextChange} />
         </Segment>
         <div className="edit-icons">

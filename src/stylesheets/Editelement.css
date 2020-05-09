@@ -92,6 +92,11 @@
   fill: var(--primary);
   pointer-events: none;
 }
+@media only screen and (min-width: 600px) {
+  .text-edit-input{
+    display: none;
+  }
+}
 @media only screen and (max-width: 600px) {
   .edit-container.mobile {
     display: flex;
