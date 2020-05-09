@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "afb111b1edea26eabe853103eae47921",
+    "revision": "eaef4fa5392e816560b18066498cf7c7",
     "url": "/shirtdesign/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/shirtdesign/static/css/2.22306566.chunk.css"
   },
   {
-    "revision": "d35b0d8cee73921e4d32",
-    "url": "/shirtdesign/static/css/main.536319f3.chunk.css"
+    "revision": "5e407cf7e56cb038cd24",
+    "url": "/shirtdesign/static/css/main.2a6629b1.chunk.css"
   },
   {
     "revision": "ae7e55d9a19e1ed2198f",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/shirtdesign/static/js/2.0f6c7ff8.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "d35b0d8cee73921e4d32",
-    "url": "/shirtdesign/static/js/main.150b1dd2.chunk.js"
+    "revision": "5e407cf7e56cb038cd24",
+    "url": "/shirtdesign/static/js/main.c10602cb.chunk.js"
   },
   {
     "revision": "57322e99e5f43f50b279",
