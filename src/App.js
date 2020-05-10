@@ -8,6 +8,7 @@ import { Route, Switch, Link } from "react-router-dom";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import { Icon, Header } from "semantic-ui-react";
+import Cache from "./pages/Cache";
 
 class App extends Component {
   constructor(props) {
@@ -36,6 +37,9 @@ class App extends Component {
           </Route>
           <Route exact path="/contact">
             <Contact />
+          </Route>
+          <Route exact path="/cache">
+            <Cache />
           </Route>
           <Route exact path="/dashboard">
             <Dashboard />

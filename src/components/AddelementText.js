@@ -12,9 +12,9 @@ export default function AddelementText() {
     });
     textbox.set({
       transparentCorners: false,
-      cornerColor: "#a0c7ce",
-      cornerStrokeColor: "#a0c7ce",
-      borderColor: "#a0c7ce",
+      cornerColor: "#fe7a88",
+      cornerStrokeColor: "#fe7a88",
+      borderColor: "#fe7a88",
       cornerSize: 12,
       padding: 10,
       cornerStyle: "circle",

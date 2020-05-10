@@ -60,12 +60,12 @@ export default class Shirtdesigner extends Component {
     var x = new window.fabric.Canvas("", {
       height: window.canvasWidth,
       width: window.canvasWidth,
-      backgroundColor: "#fe7a88",
+      // backgroundColor: "#fe7a88",
       selection: false,
     });
     oImg.left = 0;
     oImg.top = 0;
-    oImg.scale(window.canvas.height / oImg.height / 1.5);
+    oImg.scale(window.canvas.height / oImg.height / 1); //set the ratio here
     oImg.selectable = false;
     oImg.evented = false;
     x.add(oImg);

@@ -93,7 +93,7 @@
   pointer-events: none;
 }
 @media only screen and (min-width: 600px) {
-  .text-edit-input{
+  .text-edit-input {
     display: none;
   }
 }
