@@ -1,22 +1,22 @@
 import React, { Component } from "react";
 import Colorpicker from "./Colorpicker";
 import Fontselector from "./Fontselector";
-import { Segment, Input } from 'semantic-ui-react'
+import { Segment, TextArea, Form } from "semantic-ui-react";
 
 export default class EditText extends Component {
   constructor(props) {
     super(props);
-    this.state = { currentText: "" }
+    this.state = { currentText: "" };
   }
   componentDidMount() {
-    this.setState({ currentText: window.canvas.getActiveObject().get('text') })
+    this.setState({ currentText: window.canvas.getActiveObject().get("text") });
   }
   handleTextChange = (e, data) => {
     this.setState({ currentText: data.value }, () => {
-      window.canvas.getActiveObject().set('text', this.state.currentText);
+      window.canvas.getActiveObject().set("text", this.state.currentText);
       window.canvas.renderAll();
     });
-  }
+  };
   handleEditIcons = (e) => {
     // alert(e.target.getAttribute("data-action"));
     const clicked = e.target.getAttribute("data-action");
@@ -67,14 +67,49 @@ export default class EditText extends Component {
           console.log("Error happened");
           break;
       }
+
       window.canvas.renderAll();
+      //Save Current Canvas
+      var currentCanvasBeforeSaving = JSON.parse(
+        localStorage.getItem(window.currentProduct)
+      );
+      var currentCanvas = window.canvas.toJSON([
+        "selectable",
+        "evented",
+        "transparentCorners",
+        "cornerColor",
+        "cornerStrokeColor",
+        "borderColor",
+        "cornerSize",
+        "padding",
+        "cornerStyle",
+        "strokeWidth",
+      ]);
+      currentCanvasBeforeSaving[window.currentCanvas] = currentCanvas;
+      localStorage.setItem(
+        window.currentProduct,
+        JSON.stringify(currentCanvasBeforeSaving)
+      );
     }
   };
   render() {
     return (
       <>
-        <Segment className="text-edit-input" style={{ width: "100%" }} basic textAlign='center'>
-          <Input color="teal" placeholder='Enter your text' icon='font' iconPosition='left' fluid value={this.state.currentText} onChange={this.handleTextChange} />
+        <Segment
+          className="text-edit-input"
+          style={{ width: "100%" }}
+          basic
+          textAlign="center"
+        >
+          {/* <Input color="teal" placeholder='Enter your text' icon='font' iconPosition='left' fluid value={this.state.currentText} onChange={this.handleTextChange} /> */}
+          <Form>
+            <TextArea
+              value={this.state.currentText}
+              onChange={this.handleTextChange}
+              placeholder="enter your text"
+              rows={2}
+            />
+          </Form>
         </Segment>
         <div className="edit-icons">
           <Colorpicker />

@@ -4,56 +4,50 @@ import { Popup, Grid, Image, Segment } from "semantic-ui-react";
 export default class Canvasthumbnails extends Component {
   constructor(props) {
     super(props);
-    this.state = { selectedUrl: "front.png" };
+    this.state = {
+      selectedImage: "",
+    };
   }
   componentDidMount() {
-    window.fabric.Image.fromURL(this.state.selectedUrl, (oImg) => {
-      oImg.left = 0;
-      oImg.top = 0;
-      oImg.scale(window.canvas.height / oImg.height / 1.5);
-      oImg.selectable = false;
-      oImg.evented = false;
-      //   window.canvas.moveTo(oImg, 0);
-      window.canvas.add(oImg);
-      window.canvas.centerObject(oImg);
-      window.canvas.renderAll();
-      var textbox = new window.fabric.Textbox("Your Text", {
-        left: 250,
-        top: 250,
-        width: 150,
-        fontSize: 20,
-        textAlign: "center",
-        fill: "#000000",
-      });
-      textbox.set({
-        transparentCorners: false,
-        cornerColor: "#a0c7ce",
-        cornerStrokeColor: "#a0c7ce",
-        borderColor: "#a0c7ce",
-        cornerSize: 12,
-        padding: 10,
-        cornerStyle: "circle",
-        objectCaching: false,
-      });
-      window.canvas.centerObject(textbox);
-      window.canvas.add(textbox);
-      window.canvas.renderAll();
-    });
-    // this.changeImage(this.state.selectedUrl);
+    window.canvas.loadFromJSON(
+      JSON.parse(localStorage.getItem(this.props.currentProduct))[
+        this.props.imageLinks[0]
+      ]
+    );
+    window.currentCanvas = this.props.imageLinks[0];
+    this.setState({ selectedImage: this.props.imageLinks[0] });
   }
-  changeImage = (image) => {
-    window.canvas.clear();
+  changeImage = (image) => {};
+  changeCanvas = (image) => {
+    // Save the Current Canvas
+    var currentCanvasBeforeSaving = JSON.parse(
+      localStorage.getItem(this.props.currentProduct)
+    );
 
-    window.canvas.backgroundColor = "#fe7a88";
-    window.fabric.Image.fromURL(image, (oImg) => {
-      oImg.scale(window.canvas.height / oImg.height / 1.5);
-      oImg.selectable = false;
-      oImg.evented = false;
-      window.canvas.moveTo(oImg, 0);
-      window.canvas.add(oImg);
-      window.canvas.centerObject(oImg);
-    });
-    this.setState({ selectedUrl: image });
+    var currentCanvas = window.canvas.toJSON([
+      "selectable",
+      "evented",
+      "transparentCorners",
+      "cornerColor",
+      "cornerStrokeColor",
+      "borderColor",
+      "cornerSize",
+      "padding",
+      "cornerStyle",
+      "strokeWidth",
+    ]);
+    currentCanvasBeforeSaving[this.state.selectedImage] = currentCanvas;
+    localStorage.setItem(
+      this.props.currentProduct,
+      JSON.stringify(currentCanvasBeforeSaving)
+    );
+    // Load the Next Canvas
+    window.canvas.loadFromJSON(
+      JSON.parse(localStorage.getItem(this.props.currentProduct))[image]
+    );
+
+    window.currentCanvas = image;
+    this.setState({ selectedImage: image });
   };
   render() {
     return (
@@ -61,44 +55,23 @@ export default class Canvasthumbnails extends Component {
         <Popup
           trigger={
             <div className="canvas-thumbnail">
-              <Image src={this.state.selectedUrl} size="tiny" />
+              <Image src={this.state.selectedImage} size="tiny" />
             </div>
           }
           hoverable
         >
           <Grid columns={2}>
-            <Grid.Column>
-              <Segment
-                onClick={() => this.changeImage("front.png")}
-                className="canvas-thumbnail-select"
+            {this.props.imageLinks.map((imageLink) => (
+              <Grid.Column
+                key={imageLink}
+                data-imageurl={imageLink}
+                onClick={(e) => this.changeCanvas(imageLink)}
               >
-                <Image src="front.png" size="small" />
-              </Segment>
-            </Grid.Column>
-            <Grid.Column>
-              <Segment
-                onClick={() => this.changeImage("back.png")}
-                className="canvas-thumbnail-select"
-              >
-                <Image src="back.png" size="small" />
-              </Segment>
-            </Grid.Column>
-            <Grid.Column>
-              <Segment
-                onClick={() => this.changeImage("left.png")}
-                className="canvas-thumbnail-select"
-              >
-                <Image src="left.png" size="small" />
-              </Segment>
-            </Grid.Column>
-            <Grid.Column>
-              <Segment
-                onClick={() => this.changeImage("right.png")}
-                className="canvas-thumbnail-select"
-              >
-                <Image src="right.png" size="small" />
-              </Segment>
-            </Grid.Column>
+                <Segment className="canvas-thumbnail-select">
+                  <Image src={imageLink} size="small" />
+                </Segment>
+              </Grid.Column>
+            ))}
           </Grid>
         </Popup>
       </div>

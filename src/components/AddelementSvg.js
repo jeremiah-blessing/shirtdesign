@@ -60,7 +60,11 @@ export default class AddelementSvg extends Component {
         cornerStyle: "circle",
         strokeWidth: 10,
       });
-      window.canvas.add(obj).centerObject(obj).renderAll();
+      obj.left = Math.floor(Math.random() * 150) + 1;
+      obj.top = Math.floor(Math.random() * 150) + 1;
+      window.canvas.centerObject(obj);
+      window.canvas.add(obj);
+      window.canvas.renderAll();
     });
   };
   render() {

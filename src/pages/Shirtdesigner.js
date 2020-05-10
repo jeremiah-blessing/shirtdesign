@@ -9,7 +9,15 @@ import Canvasthumbnails from "../components/Canvasthumbnails";
 export default class Shirtdesigner extends Component {
   constructor(props) {
     super(props);
-    this.state = { selectedMenu: false, editingState: "none" }; //OPTIONS: Add new | Select Product [MODAL] | Save [MODAL] | Cart for Size [MODAL]
+    this.state = {
+      selectedMenu: false,
+      editingState: "none",
+      currentProduct: "",
+      imagesCount: 0,
+      imagesLoadedCount: 0,
+      allCanvasCreated: false,
+      imageLinks: [],
+    };
   }
 
   handleCanvasClick = (options) => {
@@ -20,19 +28,108 @@ export default class Shirtdesigner extends Component {
       this.setState({ editingState: "none" });
     }
   };
+  selectProduct = () => {
+    // TODO:Get the product
+    // TODO:Simulate getting  a Unique Product
+    // Set current Product
+    window.currentProduct = "white_shirt";
+    var currentProduct = "white_shirt";
+    var imageLinks = [
+      "https://firebasestorage.googleapis.com/v0/b/shirtdesign.appspot.com/o/white_shirt%2Ffront.png?alt=media&token=ad26151d-9c58-4732-a6aa-36079168c196",
+      "https://firebasestorage.googleapis.com/v0/b/shirtdesign.appspot.com/o/white_shirt%2Fback.png?alt=media&token=14b23a19-fa9f-440e-951e-2845cc8909b5",
+      "https://firebasestorage.googleapis.com/v0/b/shirtdesign.appspot.com/o/white_shirt%2Fleft.png?alt=media&token=63354f98-350e-4757-a849-99e6eb12d977",
+      "https://firebasestorage.googleapis.com/v0/b/shirtdesign.appspot.com/o/white_shirt%2Fright.png?alt=media&token=9a8aa955-e920-4db6-8f32-5fc31a17f88c",
+    ];
+    this.setState(
+      { currentProduct, imagesCount: imageLinks.length, imageLinks },
+      () => {
+        if (localStorage.getItem(currentProduct) !== null) {
+          this.setState({ allCanvasCreated: true });
+        } else {
+          localStorage.setItem(currentProduct, "{}");
+          imageLinks.forEach((imageLink) => {
+            window.fabric.Image.fromURL(imageLink, this.createEmptyCanvas, {
+              crossOrigin: "anonymous",
+            });
+          });
+        }
+      }
+    );
+  };
+  createEmptyCanvas = (oImg) => {
+    var x = new window.fabric.Canvas("", {
+      height: window.canvasWidth,
+      width: window.canvasWidth,
+      backgroundColor: "#fe7a88",
+      selection: false,
+    });
+    oImg.left = 0;
+    oImg.top = 0;
+    oImg.scale(window.canvas.height / oImg.height / 1.5);
+    oImg.selectable = false;
+    oImg.evented = false;
+    x.add(oImg);
+    x.centerObject(oImg);
+    x.renderAll();
+    var currentLocalStorage = JSON.parse(
+      localStorage.getItem(this.state.currentProduct)
+    );
+
+    currentLocalStorage[oImg.getSrc()] = JSON.stringify(
+      x.toJSON(["selectable", "evented"])
+    );
+    localStorage.setItem(
+      this.state.currentProduct,
+      JSON.stringify(currentLocalStorage)
+    );
+    this.setState(
+      {
+        imagesLoadedCount: this.state.imagesLoadedCount + 1,
+      },
+      () => {
+        if (this.state.imagesLoadedCount === this.state.imagesCount) {
+          this.setState({ allCanvasCreated: true });
+        }
+      }
+    );
+  };
   componentDidMount() {
     window.createCanvas();
     this.canvas = window.canvas;
     this.fabric = window.fabricInstance;
 
-    window.fabricInstance.Object.prototype.cornerColor = "blue";
-    // PROTOTYPE
-
-    // PROTOTYPE
     // Add a event Listner
+    function saveCurrentCanvas() {
+      console.log("Something chagned");
+      var currentCanvasBeforeSaving = JSON.parse(
+        localStorage.getItem(window.currentProduct)
+      );
+      var currentCanvas = window.canvas.toJSON([
+        "selectable",
+        "evented",
+        "transparentCorners",
+        "cornerColor",
+        "cornerStrokeColor",
+        "borderColor",
+        "cornerSize",
+        "padding",
+        "cornerStyle",
+        "strokeWidth",
+      ]);
+      currentCanvasBeforeSaving[window.currentCanvas] = currentCanvas;
+      localStorage.setItem(
+        window.currentProduct,
+        JSON.stringify(currentCanvasBeforeSaving)
+      );
+    }
     var listenCanvas;
-    if (window.canvas) {
+    if (window.canvas && window.fabricInstance) {
       window.canvas.on("mouse:down", this.handleCanvasClick);
+      window.canvas.on("object:added", saveCurrentCanvas);
+      window.canvas.on("object:removed", saveCurrentCanvas);
+      window.canvas.on("object:modified", saveCurrentCanvas);
+
+      this.selectProduct();
     } else {
       listenCanvas = setInterval(() => {
         if (window.canvas) {
@@ -57,7 +154,14 @@ export default class Shirtdesigner extends Component {
               <div className="canvas-con">
                 <canvas id="sd" height={500} width={500}></canvas>
               </div>
-              <Canvasthumbnails />
+              {this.state.allCanvasCreated ? (
+                <Canvasthumbnails
+                  imageLinks={this.state.imageLinks}
+                  currentProduct={this.state.currentProduct}
+                />
+              ) : (
+                ""
+              )}
             </div>
           </Grid.Column>
           <Grid.Column tablet={16} computer={8}>

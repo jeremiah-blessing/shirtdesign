@@ -21,6 +21,27 @@ export default class Editimage extends Component {
           break;
       }
       window.canvas.renderAll();
+      //Save Current Canvas
+      var currentCanvasBeforeSaving = JSON.parse(
+        localStorage.getItem(window.currentProduct)
+      );
+      var currentCanvas = window.canvas.toJSON([
+        "selectable",
+        "evented",
+        "transparentCorners",
+        "cornerColor",
+        "cornerStrokeColor",
+        "borderColor",
+        "cornerSize",
+        "padding",
+        "cornerStyle",
+        "strokeWidth",
+      ]);
+      currentCanvasBeforeSaving[window.currentCanvas] = currentCanvas;
+      localStorage.setItem(
+        window.currentProduct,
+        JSON.stringify(currentCanvasBeforeSaving)
+      );
     }
   };
   render() {

@@ -3,7 +3,6 @@ import "../stylesheets/Editelement.css";
 import EditText from "./EditText";
 import Editimage from "./Editimage";
 import Editsvg from "./Editsvg";
-import { Input, Segment, Gird, Grid } from 'semantic-ui-react';
 
 export default class Editelement extends Component {
   constructor(props) {
@@ -42,18 +41,12 @@ export default class Editelement extends Component {
       >
         <span className="edit">Edit</span>
         <div className="edit-container-in">
-          {this.props.editingState === "textbox" ? (
-
-            <EditText />
-
-          ) : (
-              ""
-            )}
+          {this.props.editingState === "textbox" ? <EditText /> : ""}
           {this.props.editingState === "none" ? (
             <h1 className="sae">Select Something</h1>
           ) : (
-              ""
-            )}
+            ""
+          )}
           {this.props.editingState === "image" ? <Editimage /> : ""}
           {this.props.editingState === "path" ? <Editsvg /> : ""}
         </div>

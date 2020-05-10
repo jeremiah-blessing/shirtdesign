@@ -106,7 +106,9 @@ export default class AddelementImage extends Component {
         src={imageLink}
         key={index}
         onClick={(e) => {
-          window.fabric.Image.fromURL(e.target.src, this.addImageInCanvas);
+          window.fabric.Image.fromURL(e.target.src, this.addImageInCanvas, {
+            crossOrigin: "anonymous",
+          });
         }}
         className="uploaded-images"
       />

@@ -1,9 +1,17 @@
 import React from "react";
-import { Modal, Header, Icon } from "semantic-ui-react";
+import { saveAs } from "file-saver";
+import { Icon, Button, Popup } from "semantic-ui-react";
 
 export default function Productelementsave() {
   return (
-    <Modal
+    <Popup
+      style={{
+        backgroundColor: "transparent",
+        // marginBottom: "-20",
+      }}
+      inverted
+      basic
+      hoverable
       trigger={
         <div className="add-product-icon-container">
           <svg
@@ -18,16 +26,53 @@ export default function Productelementsave() {
         </div>
       }
     >
-      <Modal.Header>Save Design</Modal.Header>
-      <Modal.Content>
-        <Modal.Description>
-          <Header as="h2" icon textAlign="center">
-            <Icon name="clock" circular />
-            <Header.Content>Save Design</Header.Content>
-            <Header.Subheader>Milestone 3</Header.Subheader>
-          </Header>
-        </Modal.Description>
-      </Modal.Content>
-    </Modal>
+      <Button
+        icon
+        labelPosition="left"
+        // circular
+        color="teal"
+        style={{
+          backgroundColor: "#fe7a88",
+          boxShadow: "0px 0px 15px rgba(0,0,0,0.3)",
+          marginBottom: 17,
+        }}
+        size="large"
+        onClick={() => {
+          window.canvas.discardActiveObject();
+          window.canvas.renderAll();
+          document
+            .getElementById("sd")
+            .toBlob((blob) =>
+              saveAs(
+                blob,
+                `Shirtdesign-${Math.round(Math.random() * 10000)}.png`
+              )
+            );
+          var x = new window.fabric.Canvas("", {
+            height: window.canvasWidth,
+            width: window.canvasWidth,
+            backgroundColor: "#fe7a88",
+            selection: false,
+          });
+        }}
+      >
+        <Icon name="download" />
+        Download Design
+      </Button>
+      <Button
+        icon
+        fluid
+        labelPosition="left"
+        color="teal"
+        style={{
+          backgroundColor: "#fe7a88",
+          boxShadow: "0px 0px 15px rgba(0,0,0,0.3)",
+        }}
+        size="large"
+      >
+        <Icon name="save" />
+        Save Design
+      </Button>
+    </Popup>
   );
 }

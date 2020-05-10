@@ -1,36 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
 
-    <!-- Extra fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Narrow:ital,wght@0,400;0,700;1,400;1,700&family=Caveat+Brush&family=Oswald:wght@400;700&family=Sacramento&display=swap"
-      rel="stylesheet"
-    />
-    <!--
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <!-- Extra fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Narrow:ital,wght@0,400;0,700;1,400;1,700&family=Caveat+Brush&family=Oswald:wght@400;700&family=Sacramento&display=swap"
+    rel="stylesheet" />
+  <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <script src="%PUBLIC_URL%/fabric-min.js"></script>
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+  <script src="%PUBLIC_URL%/fabric-min.js"></script>
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -39,24 +33,26 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
-    <style>
+  <title>React App</title>
+  <style>
+    #sd {
+      width: 600;
+      height: 600;
+    }
+
+    @media only screen and (max-width: 600px) {
       #sd {
-        width: 600;
-        height: 600;
+        width: 300;
+        height: 300;
       }
-      @media only screen and (max-width: 600px) {
-        #sd {
-          width: 300;
-          height: 300;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
+    }
+  </style>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -67,46 +63,48 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
 
-    <script>
-      window.createCanvas = () => {
-        var windowWidth = window.innerWidth,
-          windowHeight = window.innerHeight;
-        var canvasWidth, canvasHeight;
-        if (windowWidth > 600) {
-          canvasWidth = 450;
-          canvasHeight = 450;
-        } else if (windowWidth > 500) {
-          canvasWidth = 450;
-          canvasHeight = windowHeight - 350;
-        } else if (windowWidth > 400) {
-          canvasWidth = 330;
-          canvasHeight = windowHeight - 350;
-        } else if (windowWidth > 350) {
-          canvasWidth = 250;
-          canvasHeight = windowHeight - 350;
-        } else {
-          canvasWidth = 250;
-          canvasHeight = windowHeight - 350;
-        }
-        window.canvas = new fabric.Canvas("sd", {
-          // backgroundColor: "#fff",
-          backgroundColor: "#fe7a88",
-          height: canvasWidth,
-          width: canvasWidth,
-        });
-        window.fabricInstance = fabric;
-        // Adding Controller
+  <script>
+    window.createCanvas = () => {
+      var windowWidth = window.innerWidth,
+        windowHeight = window.innerHeight;
+      var canvasWidth, canvasHeight;
+      if (windowWidth > 600) {
+        canvasWidth = 450;
+        canvasHeight = 450;
+      } else if (windowWidth > 500) {
+        canvasWidth = 450;
+        canvasHeight = windowHeight - 350;
+      } else if (windowWidth > 400) {
+        canvasWidth = 330;
+        canvasHeight = windowHeight - 350;
+      } else if (windowWidth > 350) {
+        canvasWidth = 250;
+        canvasHeight = windowHeight - 350;
+      } else {
+        canvasWidth = 250;
+        canvasHeight = windowHeight - 350;
+      }
+      window.canvasWidth = canvasWidth;
+      window.canvas = new fabric.Canvas("sd", {
+        // backgroundColor: "#fff",
+        backgroundColor: "#fe7a88",
+        height: canvasWidth,
+        width: canvasWidth,
+      });
+      window.fabricInstance = fabric;
+      // Adding Controller
 
-        // fabric.Object.prototype.transparentCorners = false;
-        // fabric.Object.prototype.cornerColor = "blue";
-        // fabric.Object.prototype.cornerStyle = "rect";
-        // fabric.Object.prototype.stroke = "lightgreen";
-        // fabric.Object.prototype.strokeWidth = 4;
+      // fabric.Object.prototype.transparentCorners = false;
+      // fabric.Object.prototype.cornerColor = "blue";
+      // fabric.Object.prototype.cornerStyle = "rect";
+      // fabric.Object.prototype.stroke = "lightgreen";
+      // fabric.Object.prototype.strokeWidth = 4;
 
-        // Last thing
+      // Last thing
 
-        // Last thing
-      };
-    </script>
-  </body>
+      // Last thing
+    };
+  </script>
+</body>
+
 </html>
