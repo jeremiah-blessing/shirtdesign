@@ -35,10 +35,14 @@ export default class Shirtdesigner extends Component {
     window.currentProduct = "white_shirt";
     var currentProduct = "white_shirt";
     var imageLinks = [
-      "https://firebasestorage.googleapis.com/v0/b/shirtdesign.appspot.com/o/white_shirt%2Ffront.png?alt=media&token=ad26151d-9c58-4732-a6aa-36079168c196",
-      "https://firebasestorage.googleapis.com/v0/b/shirtdesign.appspot.com/o/white_shirt%2Fback.png?alt=media&token=14b23a19-fa9f-440e-951e-2845cc8909b5",
-      "https://firebasestorage.googleapis.com/v0/b/shirtdesign.appspot.com/o/white_shirt%2Fleft.png?alt=media&token=63354f98-350e-4757-a849-99e6eb12d977",
-      "https://firebasestorage.googleapis.com/v0/b/shirtdesign.appspot.com/o/white_shirt%2Fright.png?alt=media&token=9a8aa955-e920-4db6-8f32-5fc31a17f88c",
+      //"https://firebasestorage.googleapis.com/v0/b/shirtdesign.appspot.com/o/white_shirt%2Ffront.png?alt=media&token=ad26151d-9c58-4732-a6aa-36079168c196",
+      //"https://firebasestorage.googleapis.com/v0/b/shirtdesign.appspot.com/o/white_shirt%2Fback.png?alt=media&token=14b23a19-fa9f-440e-951e-2845cc8909b5",
+      //"https://firebasestorage.googleapis.com/v0/b/shirtdesign.appspot.com/o/white_shirt%2Fleft.png?alt=media&token=63354f98-350e-4757-a849-99e6eb12d977",
+      //"https://firebasestorage.googleapis.com/v0/b/shirtdesign.appspot.com/o/white_shirt%2Fright.png?alt=media&token=9a8aa955-e920-4db6-8f32-5fc31a17f88c",
+      "https://jeremiah-blessing.github.io/shirtdesign/front.png",
+      "https://jeremiah-blessing.github.io/shirtdesign/back.png",
+      "https://jeremiah-blessing.github.io/shirtdesign/left.png",
+      "https://jeremiah-blessing.github.io/shirtdesign/right.png",
     ];
     this.setState(
       { currentProduct, imagesCount: imageLinks.length, imageLinks },
@@ -49,7 +53,7 @@ export default class Shirtdesigner extends Component {
           localStorage.setItem(currentProduct, "{}");
           imageLinks.forEach((imageLink) => {
             window.fabric.Image.fromURL(imageLink, this.createEmptyCanvas, {
-              crossOrigin: "anonymous",
+              // crossOrigin: "anonymous",
             });
           });
         }
