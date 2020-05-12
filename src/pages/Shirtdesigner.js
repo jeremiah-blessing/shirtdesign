@@ -193,7 +193,12 @@ export default class Shirtdesigner extends Component {
                 ""
               )}
               <Productelement formobile={false} />
-              <Addelements formobile={false} />
+              <Addelements
+                formobile={false}
+                setShow={(x = false) => {
+                  console.log("From desktop");
+                }}
+              />
               <Editelement
                 editingState={this.state.editingState}
                 formobile={false}

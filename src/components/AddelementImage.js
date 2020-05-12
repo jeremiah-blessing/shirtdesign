@@ -98,6 +98,7 @@ export default class AddelementImage extends Component {
     window.canvas.centerObject(oImg);
     window.canvas.add(oImg);
     this.setState({ modalOpen: !this.state.modalOpen });
+    this.props.setShow(false);
   };
   render() {
     const images = this.state.imagesLink.map((imageLink, index) => (

@@ -13,10 +13,10 @@ export default class Addelements extends Component {
       >
         <span className="add">Add</span>
         <div className="icons-card">
-          <AddelementText />
-          <AddelementImage />
+          <AddelementText setShow={this.props.setShow} />
+          <AddelementImage setShow={this.props.setShow} />
 
-          <AddelementSvg />
+          <AddelementSvg setShow={this.props.setShow} />
         </div>
       </div>
     );

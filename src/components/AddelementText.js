@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function AddelementText() {
+export default function AddelementText(props) {
   const Addtext = () => {
     var textbox = new window.fabric.Textbox("Your Text", {
       left: Math.floor(Math.random() * 200) + 1,
@@ -22,6 +22,7 @@ export default function AddelementText() {
     });
     window.canvas.centerObject(textbox);
     window.canvas.add(textbox).setActiveObject(textbox);
+    props.setShow(false);
   };
   return (
     <div className="icon-container" onClick={Addtext}>

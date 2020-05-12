@@ -66,6 +66,7 @@ export default class AddelementSvg extends Component {
       window.canvas.add(obj);
       window.canvas.renderAll();
     });
+    this.props.setShow(false);
   };
   render() {
     return (
