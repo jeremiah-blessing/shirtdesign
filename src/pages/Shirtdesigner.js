@@ -19,6 +19,11 @@ export default class Shirtdesigner extends Component {
       imageLinks: [],
     };
   }
+  handleDoneEditing = () => {
+    window.canvas.discardActiveObject();
+    window.canvas.renderAll();
+    this.setState({ editingState: "none" });
+  };
 
   handleCanvasClick = (options) => {
     if (options.target) {
@@ -182,6 +187,7 @@ export default class Shirtdesigner extends Component {
                 <Editelement
                   editingState={this.state.editingState}
                   formobile={true}
+                  handleDoneEditing={this.handleDoneEditing}
                 />
               ) : (
                 ""

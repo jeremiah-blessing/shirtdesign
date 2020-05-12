@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Colorpicker from "./Colorpicker";
 import Fontselector from "./Fontselector";
-import { Segment, TextArea, Form } from "semantic-ui-react";
+import { Segment, TextArea, Form, Button } from "semantic-ui-react";
 
 export default class EditText extends Component {
   constructor(props) {
@@ -61,7 +61,12 @@ export default class EditText extends Component {
           window.canvas.getActiveObject().bringForward();
           break;
         case "movedown":
-          window.canvas.getActiveObject().sendBackwards();
+          if (
+            window.canvas
+              .getObjects()
+              .indexOf(window.canvas.getActiveObject()) > 1
+          )
+            window.canvas.getActiveObject().sendBackwards();
           break;
         default:
           console.log("Error happened");
@@ -95,13 +100,26 @@ export default class EditText extends Component {
   render() {
     return (
       <>
+        <div
+          className="done-editing"
+          style={{ width: "100%", textAlign: "center" }}
+        >
+          <Button
+            style={{ width: "80%" }}
+            content="Done editing"
+            icon="check circle"
+            labelPosition="right"
+            basic
+            inverted
+            onClick={() => this.props.handleDoneEditing()}
+          />
+        </div>
         <Segment
           className="text-edit-input"
-          style={{ width: "100%" }}
+          style={{ width: "100%", margin: "5px 0px" }}
           basic
           textAlign="center"
         >
-          {/* <Input color="teal" placeholder='Enter your text' icon='font' iconPosition='left' fluid value={this.state.currentText} onChange={this.handleTextChange} /> */}
           <Form>
             <TextArea
               value={this.state.currentText}
@@ -111,6 +129,7 @@ export default class EditText extends Component {
             />
           </Form>
         </Segment>
+
         <div className="edit-icons">
           <Colorpicker />
 

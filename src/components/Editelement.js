@@ -41,14 +41,26 @@ export default class Editelement extends Component {
       >
         <span className="edit">Edit</span>
         <div className="edit-container-in">
-          {this.props.editingState === "textbox" ? <EditText /> : ""}
+          {this.props.editingState === "textbox" ? (
+            <EditText handleDoneEditing={this.props.handleDoneEditing} />
+          ) : (
+            ""
+          )}
           {this.props.editingState === "none" ? (
             <h1 className="sae">Select Something</h1>
           ) : (
             ""
           )}
-          {this.props.editingState === "image" ? <Editimage /> : ""}
-          {this.props.editingState === "path" ? <Editsvg /> : ""}
+          {this.props.editingState === "image" ? (
+            <Editimage handleDoneEditing={this.props.handleDoneEditing} />
+          ) : (
+            ""
+          )}
+          {this.props.editingState === "path" ? (
+            <Editsvg handleDoneEditing={this.props.handleDoneEditing} />
+          ) : (
+            ""
+          )}
         </div>
       </div>
     );

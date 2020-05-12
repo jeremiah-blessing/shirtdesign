@@ -67,6 +67,9 @@
 .canvas-thumbnail-select {
   cursor: pointer;
 }
+.done-editing {
+  display: none;
+}
 @media only screen and (max-width: 600px) {
   .canvas-con {
     width: 90%;
@@ -139,6 +142,10 @@
     height: 80px;
     justify-content: space-evenly;
     z-index: 0;
+  }
+  .done-editing {
+    display: block;
+    margin: 15px 0px;
   }
 }
 

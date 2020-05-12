@@ -20,7 +20,7 @@
   min-width: 400px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   padding: 25px 25px;
   transition: all 0.3s ease;
   min-height: 200px;
