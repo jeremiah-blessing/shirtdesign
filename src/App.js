@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import { Icon, Header } from "semantic-ui-react";
 import Cache from "./pages/Cache";
+import Cart from "./pages/Cart";
 
 class App extends Component {
   constructor(props) {
@@ -45,13 +46,7 @@ class App extends Component {
             <Dashboard />
           </Route>
           <Route exact path="/cart">
-            <div className="dummy">
-              <Header as="h2" icon textAlign="center">
-                <Icon name="cart" circular />
-                <Header.Content>Cart</Header.Content>
-                <Header.Subheader>Milestone 3</Header.Subheader>
-              </Header>
-            </div>
+            <Cart />
           </Route>
           <Route exact path="/login">
             <Login />
