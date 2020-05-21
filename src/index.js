@@ -4,12 +4,15 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "semantic-ui-css/semantic.min.css";
+import AuthContextProvider from "./Authcontext";
 import { HashRouter } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
     <HashRouter>
-      <App />
+      <AuthContextProvider>
+        <App />
+      </AuthContextProvider>
     </HashRouter>
   </React.StrictMode>,
   document.getElementById("root")

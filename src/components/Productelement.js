@@ -21,7 +21,10 @@ export default class Productelement extends Component {
         <Showaddelement />
         <Productelementproduct />
         <Productelementsave />
-        <Addtocart />
+        <Addtocart
+          imageLinks={this.props.imageLinks}
+          currentProduct={this.props.currentProduct}
+        />
       </div>
     );
   }

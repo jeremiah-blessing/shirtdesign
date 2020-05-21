@@ -143,6 +143,9 @@ export default class Shirtdesigner extends Component {
       listenCanvas = setInterval(() => {
         if (window.canvas) {
           window.canvas.on("mouse:down", this.handleCanvasClick);
+          window.canvas.on("object:added", saveCurrentCanvas);
+          window.canvas.on("object:removed", saveCurrentCanvas);
+          window.canvas.on("object:modified", saveCurrentCanvas);
           clearInterval(listenCanvas);
         }
       }, 50);
@@ -178,7 +181,11 @@ export default class Shirtdesigner extends Component {
               <h1 className="design-text">Design</h1>
               <h3 className="design-text-subhead">Create Your Own Design</h3>
               {this.state.editingState === "none" ? (
-                <Productelement formobile={true} />
+                <Productelement
+                  formobile={true}
+                  imageLinks={this.state.imageLinks}
+                  currentProduct={this.state.currentProduct}
+                />
               ) : (
                 ""
               )}
@@ -192,7 +199,11 @@ export default class Shirtdesigner extends Component {
               ) : (
                 ""
               )}
-              <Productelement formobile={false} />
+              <Productelement
+                formobile={false}
+                imageLinks={this.state.imageLinks}
+                currentProduct={this.state.currentProduct}
+              />
               <Addelements
                 formobile={false}
                 setShow={(x = false) => {
@@ -206,6 +217,9 @@ export default class Shirtdesigner extends Component {
             </div>
           </Grid.Column>
         </Grid>
+        <div style={{ display: "none" }}>
+          <canvas id="canvas-export" height={500} width={500}></canvas>
+        </div>
       </Container>
     );
   }
