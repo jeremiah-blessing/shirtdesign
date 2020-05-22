@@ -25,6 +25,15 @@ class App extends Component {
     handleAuth(status, userDetail);
   }
   componentDidMount() {
+    if (
+      localStorage.getItem("tempID") === null ||
+      localStorage.getItem("tempID") === undefined
+    )
+      localStorage.setItem(
+        "tempID",
+        Math.random().toString(36).substring(7) +
+          Math.random().toString(36).substring(7)
+      );
     this.unregisterAuthObserver = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.handleAuthChange(true, user);

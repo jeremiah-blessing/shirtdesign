@@ -10,8 +10,10 @@ import {
   Icon,
   Placeholder,
 } from "semantic-ui-react";
+import { AuthContext } from "../Authcontext";
 
 export default class AddelementImage extends Component {
+  static contextType = AuthContext;
   constructor(props) {
     super(props);
     this.state = {
@@ -25,7 +27,14 @@ export default class AddelementImage extends Component {
   }
   componentDidMount() {}
   getImages = async () => {
-    var listRef = firebase.storage().ref("/images/");
+    const { isSignedIn, userDetails } = this.context;
+    var ref;
+    if (isSignedIn) {
+      ref = `/userImages/${userDetails.uid}/`;
+    } else {
+      ref = `/anonymous/${localStorage.getItem("tempID")}/`;
+    }
+    var listRef = firebase.storage().ref(ref);
     var itemReply = await listRef.listAll();
     var itemRefs = [];
     itemReply.items.forEach(function (itemRef) {
@@ -51,8 +60,15 @@ export default class AddelementImage extends Component {
     });
   };
   uploadTaskPromise = async (file) => {
+    const { isSignedIn, userDetails } = this.context;
+    var ref;
+    if (isSignedIn) {
+      ref = `/userImages/${userDetails.uid}/`;
+    } else {
+      ref = `/anonymous/${localStorage.getItem("tempID")}/`;
+    }
     return new Promise(function (resolve, reject) {
-      const storageRef = firebase.storage().ref("/images/" + file.name);
+      const storageRef = firebase.storage().ref(ref + file.name);
       const uploadTask = storageRef.put(file);
       uploadTask.on(
         "state_changed",
