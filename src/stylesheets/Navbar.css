@@ -78,17 +78,17 @@
   position: relative;
   padding: 10px;
 }
-.nav-item{
+.nav-item {
   opacity: 0;
   animation: slide-down 1s ease forwards;
 }
 
-@keyframes slide-down{
-  from{
-     opacity: 0;
-  transform: translateY(-10px);
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
-  to{
+  to {
     opacity: 1;
     transform: translateY(0px);
   }
@@ -124,12 +124,13 @@
     color: #fe7a88;
   }
   .hamburger-in {
-    height: 60px;
-    width: 60px;
+    height: 50px;
+    width: 50px;
     padding: 12px;
   }
   .hamburger-sticks {
     height: 7%;
+    margin: 0px;
   }
   .hamburger.active .hamburger-sticks:nth-of-type(1) {
     transform: translateY(7px);
@@ -160,18 +161,18 @@
     transform: translateY(-12px);
   }
 }
-.nav-item:nth-of-type(2){
+.nav-item:nth-of-type(2) {
   animation-delay: 0.2s;
 }
-.nav-item:nth-of-type(3){
+.nav-item:nth-of-type(3) {
   animation-delay: 0.4s;
 }
-.nav-item:nth-of-type(4){
+.nav-item:nth-of-type(4) {
   animation-delay: 0.6s;
 }
-.nav-item:nth-of-type(5){
+.nav-item:nth-of-type(5) {
   animation-delay: 0.7s;
 }
-.nav-item:nth-of-type(6){
+.nav-item:nth-of-type(6) {
   animation-delay: 0.8s;
 }
