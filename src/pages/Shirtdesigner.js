@@ -58,7 +58,7 @@ export default class Shirtdesigner extends Component {
           localStorage.setItem(currentProduct, "{}");
           imageLinks.forEach((imageLink) => {
             window.fabric.Image.fromURL(imageLink, this.createEmptyCanvas, {
-              crossOrigin: "anonymous",
+              // crossOrigin: "anonymous",
             });
           });
         }

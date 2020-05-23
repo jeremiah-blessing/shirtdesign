@@ -5,7 +5,7 @@ import Shirtdesigner from "./pages/Shirtdesigner";
 import Contact from "./pages/Contact";
 import firebase from "./firebaseConfig";
 import db from "./firestoreInstance";
-import { Route, Switch, Link } from "react-router-dom";
+import { Route, Switch, Link, Redirect } from "react-router-dom";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import { AuthContext } from "./Authcontext";
@@ -46,6 +46,7 @@ class App extends Component {
     this.unregisterAuthObserver();
   }
   render() {
+    const { isSignedIn } = this.context;
     return (
       <div className="App">
         <Navbar />
@@ -71,9 +72,11 @@ class App extends Component {
           <Route exact path="/dashboard">
             <Dashboard />
           </Route>
-          <Route exact path="/cart">
-            <Cart />
-          </Route>
+          <Route
+            exact
+            path="/cart"
+            render={() => (isSignedIn ? <Cart /> : <Redirect to="/login" />)}
+          />
           <Route exact path="/login">
             <Login />
           </Route>

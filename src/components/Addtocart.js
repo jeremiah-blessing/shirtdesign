@@ -9,10 +9,13 @@ import {
   Grid,
   Label,
   Header,
+  Progress,
 } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { AuthContext } from "../Authcontext";
 import db from "../firestoreInstance";
+import firebase from "../firebaseConfig";
+import "firebase/storage";
 
 export default class Addtocart extends Component {
   static contextType = AuthContext;
@@ -28,21 +31,41 @@ export default class Addtocart extends Component {
       imagesBlob: [],
       adding: false,
       added: false,
+      downloadURLs: [],
+      uploadProgress: 0,
+      nUploaded: 0,
+      redirect: false,
     };
     this.handleCreateImages = this.handleCreateImages.bind(this);
   }
 
   handleAddToCart = async () => {
-    // TODO: Handle upload ing images
-    const { userDetails } = this.context;
     this.setState({ adding: true });
+    var downloadURLs = await this.handleImagesUpload(
+      this.state.imagesBlob,
+      this.uploadTaskPromise
+    );
+    this.setState({ uploadProgress: 95 });
+    const { userDetails } = this.context;
     await db
       .collection("cart")
       .doc(userDetails.uid)
       .collection("products")
-      .doc(window.currentProduct)
-      .set({ details: this.state.sizes });
-    this.setState({ adding: false, added: true });
+      .doc(Math.random().toString(36).substring(7))
+      .set({
+        details: this.state.sizes,
+        designs: downloadURLs,
+        productName: window.currentProduct,
+      });
+    this.setState({
+      adding: false,
+      added: true,
+      downloadURLs,
+      uploadProgress: 100,
+    });
+    setTimeout(() => {
+      this.setState({ redirect: true });
+    }, 2000);
   };
 
   handleQuantityChange = (e, data) => {
@@ -87,7 +110,41 @@ export default class Addtocart extends Component {
       );
     });
   }
+  handleImagesUpload = async (imagesBlob, uploadTaskPromise) => {
+    return new Promise(async function (resolve, reject) {
+      var downloadURLs = [];
+      var orderProductName = Math.random().toString(36).substring(7);
+      for (let index = 0; index < imagesBlob.length; index++) {
+        var snapshot = await uploadTaskPromise(
+          imagesBlob[index],
+          orderProductName,
+          index
+        );
+        var downloadURL = await snapshot.ref.getDownloadURL();
+        downloadURLs.push(downloadURL);
+      }
+      resolve(downloadURLs);
+    });
+  };
+
+  uploadTaskPromise = async (file, productName, fileName) => {
+    const { isSignedIn, userDetails } = this.context;
+    var ref = `/userCartImages/${userDetails.uid}/${productName}/`;
+    this.setState({
+      uploadProgress:
+        (this.state.nUploaded / this.state.imagesBlob.length) * 100,
+      nUploaded: this.state.nUploaded + 1,
+    });
+    return new Promise(function (resolve, reject) {
+      const storageRef = firebase.storage().ref(ref + fileName);
+      storageRef.putString(file, "data_url").then(function (snapshot) {
+        resolve(snapshot);
+      });
+    });
+  };
+
   render() {
+    if (this.state.redirect) return <Redirect to="/cart" />;
     const { isSignedIn } = this.context;
 
     var total = 0;
@@ -167,13 +224,27 @@ export default class Addtocart extends Component {
                             icon
                             labelPosition="right"
                           >
-                            {this.state.added ? "Added!" : "Add to Cart"}
+                            {this.state.added
+                              ? "Added to Cart!"
+                              : "Add to Cart"}
                             <Icon name="cart" />
                           </Button>
                           <Header as="h5" color="teal">
                             *Once added to Cart, design cannot be edited
                             further.
                           </Header>
+                          {this.state.adding || this.state.added ? (
+                            <Progress
+                              percent={this.state.uploadProgress}
+                              indicating
+                            >
+                              {this.state.uploadProgress === 100
+                                ? "Designs Uploaded!"
+                                : "Uploading Designs.."}
+                            </Progress>
+                          ) : (
+                            ""
+                          )}
                         </Table.Cell>
                       </Table.Row>
                     </Table.Body>

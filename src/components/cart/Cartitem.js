@@ -9,16 +9,61 @@ import {
   Input,
   Table,
   Label,
+  Modal,
 } from "semantic-ui-react";
 
 export default class Cartitem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { modalopen: false, changed: false, subtotal: 0, sizes: [] };
+  }
+  componentDidMount() {
+    const { product } = this.props;
+    var total = 0;
+    product.details.forEach((size) => {
+      total += size.price * size.quantity;
+    });
+    this.setState({ sizes: product.details, subtotal: total });
+  }
+  handleQuantityChange = (e, data) => {
+    var tempSizes = this.state.sizes;
+    var tempCurrent = tempSizes.map((tempSize) => {
+      if (tempSize.size === data.name)
+        if (data.value === "") return { ...tempSize, quantity: 0 };
+        else return { ...tempSize, quantity: data.value };
+      else return tempSize;
+    });
+    var total = 0;
+    tempCurrent.forEach((size) => {
+      total += size.price * size.quantity;
+    });
+    this.setState({ sizes: tempCurrent, subtotal: total, changed: true });
+  };
+
   render() {
+    const { product } = this.props;
     return (
       <>
+        <Modal
+          open={this.state.modalopen}
+          size="small"
+          closeOnDimmerClick
+          onClose={() => this.setState({ modalopen: false })}
+          closeIcon
+        >
+          <Modal.Header>Designs</Modal.Header>
+          <Modal.Content>
+            <Image.Group size="medium">
+              {product.designs.map((design) => (
+                <Image src={design} />
+              ))}
+            </Image.Group>
+          </Modal.Content>
+        </Modal>
         <Grid.Row>
           <Grid.Column width={16}>
             <Header inverted as="h1">
-              Brown Shirt
+              White Shirt
             </Header>
           </Grid.Column>
         </Grid.Row>
@@ -32,10 +77,10 @@ export default class Cartitem extends Component {
                 content: "View all",
                 icon: "th",
                 ribbon: true,
-                onClick: () => alert(1),
+                onClick: () => this.setState({ modalopen: true }),
               }}
               rounded
-              src="https://www.rushordertees.com/design/ZoomImage.php?src=3082864_f&style=4980&colorCode=00&x=240&y=300&width=880&height=880&scale=1.7&watermark=false"
+              src={product.designs[0]}
               size="medium"
             />
           </Grid.Column>
@@ -47,62 +92,24 @@ export default class Cartitem extends Component {
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-                <Table.Row>
-                  <Table.Cell>
-                    <Input
-                      fluid
-                      labelPosition="right"
-                      type="number"
-                      placeholder="Quanitity"
-                    >
-                      <Label basic>S</Label>
-                      <input />
-                      <Label> ₹ 180 each</Label>
-                    </Input>
-                  </Table.Cell>
-                </Table.Row>
-                <Table.Row>
-                  <Table.Cell>
-                    <Input
-                      fluid
-                      labelPosition="right"
-                      type="number"
-                      placeholder="Quanitity"
-                    >
-                      <Label basic>M</Label>
-                      <input />
-                      <Label> ₹ 190 each</Label>
-                    </Input>
-                  </Table.Cell>
-                </Table.Row>
-                <Table.Row>
-                  <Table.Cell>
-                    <Input
-                      fluid
-                      labelPosition="right"
-                      type="number"
-                      placeholder="Quanitity"
-                    >
-                      <Label basic>L</Label>
-                      <input />
-                      <Label> ₹ 200 each</Label>
-                    </Input>
-                  </Table.Cell>
-                </Table.Row>
-                <Table.Row>
-                  <Table.Cell>
-                    <Input
-                      fluid
-                      labelPosition="right"
-                      type="number"
-                      placeholder="Quanitity"
-                    >
-                      <Label basic>XL</Label>
-                      <input />
-                      <Label> ₹ 250 each</Label>
-                    </Input>
-                  </Table.Cell>
-                </Table.Row>
+                {product.details.map((size) => (
+                  <Table.Row key={size.size}>
+                    <Table.Cell>
+                      <Input
+                        fluid
+                        labelPosition="right"
+                        type="number"
+                        name={size.size}
+                        placeholder="Quanitity"
+                        onChange={this.handleQuantityChange}
+                      >
+                        <Label basic>{size.size.toUpperCase()}</Label>
+                        <input defaultValue={size.quantity} />
+                        <Label color="teal"> ₹ {size.price} each</Label>
+                      </Input>
+                    </Table.Cell>
+                  </Table.Row>
+                ))}
               </Table.Body>
             </Table>
           </Grid.Column>
@@ -110,16 +117,25 @@ export default class Cartitem extends Component {
             <Header as="h1" inverted>
               <Icon name="rupee" />
               <Header.Content>
-                7500
+                {this.state.subtotal}
                 <Header.Subheader>Sub Total</Header.Subheader>
               </Header.Content>
             </Header>
-            <Button basic inverted icon labelPosition="right">
+            <Button
+              basic
+              inverted
+              icon
+              labelPosition="right"
+              onClick={() =>
+                this.props.deleteCartItem(this.props.product.productID)
+              }
+            >
               Delete Product
               <Icon name="trash alternate" />
             </Button>
           </Grid.Column>
         </Grid.Row>
+
         <Divider />
       </>
     );

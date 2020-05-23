@@ -28,12 +28,7 @@ export default class AddelementImage extends Component {
   componentDidMount() {}
   getImages = async () => {
     const { isSignedIn, userDetails } = this.context;
-    var ref;
-    if (isSignedIn) {
-      ref = `/userImages/${userDetails.uid}/`;
-    } else {
-      ref = `/anonymous/${localStorage.getItem("tempID")}/`;
-    }
+    var ref = `/anonymous/${localStorage.getItem("tempID")}/`;
     var listRef = firebase.storage().ref(ref);
     var itemReply = await listRef.listAll();
     var itemRefs = [];
@@ -61,12 +56,8 @@ export default class AddelementImage extends Component {
   };
   uploadTaskPromise = async (file) => {
     const { isSignedIn, userDetails } = this.context;
-    var ref;
-    if (isSignedIn) {
-      ref = `/userImages/${userDetails.uid}/`;
-    } else {
-      ref = `/anonymous/${localStorage.getItem("tempID")}/`;
-    }
+    var ref = `/anonymous/${localStorage.getItem("tempID")}/`;
+
     return new Promise(function (resolve, reject) {
       const storageRef = firebase.storage().ref(ref + file.name);
       const uploadTask = storageRef.put(file);
