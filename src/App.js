@@ -12,6 +12,7 @@ import { AuthContext } from "./Authcontext";
 import { Icon, Header } from "semantic-ui-react";
 import Cache from "./pages/Cache";
 import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
 
 class App extends Component {
   static contextType = AuthContext;
@@ -71,6 +72,9 @@ class App extends Component {
           </Route>
           <Route exact path="/dashboard">
             <Dashboard />
+          </Route>
+          <Route exact path="/checkout">
+            <Checkout />
           </Route>
           <Route
             exact
