@@ -31,7 +31,7 @@ export default class Checkout extends Component {
         country: "",
       },
       formErrors: false,
-      pageState: 2,
+      pageState: 1,
     };
   }
   changePageState = (state) => this.setState({ pageState: state });
